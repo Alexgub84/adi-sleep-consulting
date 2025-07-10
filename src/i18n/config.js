@@ -11,14 +11,22 @@ export const ui = {
     'nav.about': 'About Me',
     'nav.products': 'My Products',
     'nav.contact': 'Contact',
-    'lang.switch': 'עברית'
+    'lang.switch': 'עברית',
+    'footer.copyright': '© 2024 ADI Sleep Consulting. All rights reserved.',
+    'footer.contact': 'Contact Us',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Terms of Service'
   },
   he: {
     'nav.home': 'בית',
     'nav.about': 'אודות',
     'nav.products': 'המוצרים שלי',
-    'nav.contact': 'צור קשר',
-    'lang.switch': 'English'
+    'nav.contact': 'צרי קשר',
+    'lang.switch': 'English',
+    'footer.copyright': '© 2024 ייעוץ שינה עדי. כל הזכויות שמורות.',
+    'footer.contact': 'צרי קשר',
+    'footer.privacy': 'מדיניות פרטיות',
+    'footer.terms': 'תנאי שירות'
   }
 };
 

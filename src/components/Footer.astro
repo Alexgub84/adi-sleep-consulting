@@ -1,0 +1,38 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Footer links - only include pages that actually exist
+const footerLinks = [
+  { href: `/${lang}/about`, label: t('footer.about') },
+  { href: `/${lang}/contact`, label: t('footer.contact') },
+  { href: `/${lang}/products`, label: t('footer.products') }
+];
+---
+
+<footer class="bg-gray-800 text-white py-8 mt-auto">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <!-- Copyright -->
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <p class="text-sm text-gray-300">
+                    {t('footer.copyright')}
+                </p>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="flex flex-wrap justify-center gap-6">
+                {footerLinks.map((link: any) => (
+                    <a 
+                        href={link.href} 
+                        class="text-gray-300 hover:text-white text-sm no-underline transition-colors"
+                    >
+                        {link.label}
+                    </a>
+                ))}
+            </div>
+        </div>
+    </div>
+</footer> 
