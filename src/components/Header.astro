@@ -1,16 +1,51 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const otherLang = lang === 'en' ? 'he' : 'en';
+const otherLangPath = lang === 'en' ? '/he' : '/en';
+
+// Navigation items
+const navItems = [
+  { href: `/${lang}/`, label: t('nav.home') },
+  { href: `/${lang}/about`, label: t('nav.about') },
+  { href: `/${lang}/products`, label: t('nav.products') },
+  { href: `/${lang}/contact`, label: t('nav.contact') }
+];
+
+// Generate the other language URL
+const currentPath = Astro.url.pathname;
+const otherLangUrl = currentPath.replace(`/${lang}`, `/${otherLang}`);
+---
+
 <header class="bg-gray-800 py-4">
     <nav class="px-4">
-        <ul class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 m-0 p-0 list-none">
-            <li class="w-full sm:w-auto text-center">
-                <a href="/" class="text-white hover:text-gray-300 text-lg no-underline block py-2 sm:py-0">Home</a>
-            </li>
-            <li class="w-full sm:w-auto text-center">
-                <a href="/about" class="text-white hover:text-gray-300 text-lg no-underline block py-2 sm:py-0">About Me</a>
-            </li>
-            <li class="w-full sm:w-auto text-center">
-                <a href="/products" class="text-white hover:text-gray-300 text-lg no-underline block py-2 sm:py-0">My Products</a>
-            </li>
-        </ul>
+        <div class="flex flex-col sm:flex-row justify-between items-center">
+            <!-- Main Navigation -->
+            <ul class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 m-0 p-0 list-none">
+                {navItems.map((item: any) => (
+                    <li class="w-full sm:w-auto text-center">
+                        <a 
+                            href={item.href} 
+                            class="text-white hover:text-gray-300 text-lg no-underline block py-2 sm:py-0"
+                        >
+                            {item.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+            
+            <!-- Language Switcher -->
+            <div class="mt-4 sm:mt-0">
+                <a 
+                    href={otherLangUrl} 
+                    class="text-white hover:text-gray-300 text-sm no-underline px-3 py-1 border border-white rounded hover:bg-white hover:text-gray-800 transition-colors"
+                >
+                    {t('lang.switch')}
+                </a>
+            </div>
+        </div>
     </nav>
 </header>
 

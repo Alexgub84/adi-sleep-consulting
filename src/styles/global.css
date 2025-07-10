@@ -2,14 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add any custom styles that can't be achieved with Tailwind here */
-
-main {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h1 {
-  margin-bottom: 1rem;
-}
+/* Custom styles that can't be achieved with Tailwind */
+/* Add any custom CSS here if needed */

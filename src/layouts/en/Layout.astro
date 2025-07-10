@@ -1,0 +1,54 @@
+---
+import '../../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	url?: string;
+}
+
+const { 
+	title, 
+	description = "Professional sleep consulting services to help you achieve better sleep and improve your overall health and well-being.",
+	image = "/og-image.jpg",
+	url = Astro.url.href
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="w-full h-full" dir="ltr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />	
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="ADI Sleep Consulting" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:site_name" content="ADI Sleep Consulting" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={image} />
+		
+		<!-- Additional SEO -->
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="w-full h-full m-0">
+		<slot />
+	</body>
+</html> 

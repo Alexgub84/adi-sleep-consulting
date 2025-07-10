@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/he/PageLayout.astro';
+import { getLangFromUrl } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<Layout title="דף לא נמצא - ייעוץ שינה עדי">
+	<main class="py-16 text-center">
+		<div class="max-w-2xl mx-auto px-4">
+			<!-- 404 Icon -->
+			<div class="mb-8">
+				<svg class="mx-auto h-24 w-24 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33M15 19l3-3m0 0l-3-3m3 3H9" />
+				</svg>
+			</div>
+
+			<!-- Error Message -->
+			<h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
+			<h2 class="text-2xl font-semibold text-gray-700 mb-4">דף לא נמצא</h2>
+			<p class="text-lg text-gray-600 mb-8 leading-relaxed">
+				מצטערים, הדף שחיפשת לא קיים. ייתכן שהוא הועבר, נמחק, או שהזנת כתובת שגויה.
+			</p>
+
+			<!-- Action Buttons -->
+			<div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+				<a 
+					href="/he/" 
+					class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+				>
+					חזרה לדף הבית
+				</a>
+				<a 
+					href="/he/contact" 
+					class="bg-white text-blue-600 px-6 py-3 rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-colors font-semibold"
+				>
+					צור קשר
+				</a>
+			</div>
+
+			<!-- Language Switcher -->
+			<div class="border-t pt-8">
+				<p class="text-sm text-gray-500 mb-4">Looking for English?</p>
+				<a 
+					href="/en/404" 
+					class="text-blue-600 hover:text-blue-800 font-medium"
+				>
+					English
+				</a>
+			</div>
+		</div>
+	</main>
+</Layout> 
