@@ -1,0 +1,126 @@
+---
+import { getLangFromUrl } from '../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+
+const content = {
+  en: {
+    title: "Schedule a Free Consultation",
+    subtitle: "Get started with your sleep journey today",
+    nameLabel: "Full Name *",
+    phoneLabel: "Phone Number *",
+    emailLabel: "Email Address *",
+    submitText: "Schedule Consultation",
+    namePlaceholder: "Enter your full name",
+    phonePlaceholder: "Enter your phone number",
+    emailPlaceholder: "Enter your email address"
+  },
+  he: {
+    title: "לתיאום פגישת ייעוץ בהקדמה",
+    subtitle: "התחל את מסע השינה שלך היום",
+    nameLabel: "שם מלא *",
+    phoneLabel: "מספר טלפון *",
+    emailLabel: "כתובת אימייל *",
+    submitText: "תאום ייעוץ",
+    namePlaceholder: "הזן את שמך המלא",
+    phonePlaceholder: "הזן את מספר הטלפון שלך",
+    emailPlaceholder: "הזן את כתובת האימייל שלך"
+  }
+};
+
+const { title, subtitle, nameLabel, phoneLabel, emailLabel, submitText, namePlaceholder, phonePlaceholder, emailPlaceholder } = content[lang as keyof typeof content] || content.en;
+---
+
+<section class="py-12 md:py-16">
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl md:text-4xl font-bold text-text-dark mb-4">{title}</h2>
+      <p class="text-lg font-medium text-text-dark">{subtitle}</p>
+    </div>
+    
+    <form id="consultForm" class="max-w-md mx-auto p-6 bg-form-bg rounded shadow space-y-4">
+      <!-- Name Field -->
+      <div>
+        <label for="consultName" class="block text-sm font-medium text-text-dark mb-1">
+          {nameLabel}
+        </label>
+        <input 
+          type="text" 
+          id="consultName" 
+          name="name" 
+          required
+          placeholder={namePlaceholder}
+          class="w-full px-4 py-2 border border-soft-border rounded focus:outline-none focus:ring-2 focus:ring-brand-accent"
+        >
+      </div>
+
+      <!-- Phone Field -->
+      <div>
+        <label for="consultPhone" class="block text-sm font-medium text-text-dark mb-1">
+          {phoneLabel}
+        </label>
+        <input 
+          type="tel" 
+          id="consultPhone" 
+          name="phone" 
+          required
+          placeholder={phonePlaceholder}
+          class="w-full px-4 py-2 border border-soft-border rounded focus:outline-none focus:ring-2 focus:ring-brand-accent"
+        >
+      </div>
+
+      <!-- Email Field -->
+      <div>
+        <label for="consultEmail" class="block text-sm font-medium text-text-dark mb-1">
+          {emailLabel}
+        </label>
+        <input 
+          type="email" 
+          id="consultEmail" 
+          name="email" 
+          required
+          placeholder={emailPlaceholder}
+          class="w-full px-4 py-2 border border-soft-border rounded focus:outline-none focus:ring-2 focus:ring-brand-accent"
+        >
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center md:text-right">
+        <button 
+          type="submit"
+          class="w-full md:w-auto bg-brand-accent hover:bg-brand-accent-dark text-white px-6 py-2 rounded shadow font-semibold transition-colors"
+        >
+          {submitText}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('consultForm') as HTMLFormElement;
+  
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Basic validation
+    if (!data.name || !data.phone || !data.email) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email as string)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    // Show success message
+    alert('Thank you! We will contact you soon to schedule your consultation.');
+    
+    // Reset form
+    form.reset();
+  });
+</script> 

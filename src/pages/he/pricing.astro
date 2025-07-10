@@ -1,0 +1,232 @@
+---
+import Layout from '../../layouts/he/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Pricing data
+const services = [
+  {
+    name: "ייעוץ חד פעמי",
+    price: "₪400",
+    duration: "90 דקות",
+    description: "מושלם לשאלות ספציפיות או להתחלה עם הדרכה עדינה לשינה.",
+    features: [
+      "הערכה מקיפה ראשונית",
+      "פגישת ייעוץ של 90 דקות",
+      "תכנית שינה מותאמת למשפחה שלכם",
+      "תמיכה ומעקב באימייל",
+      "משאבים והמלצות"
+    ],
+    bestFor: "משפחות עם שאלות ספציפיות או כאלה שרוצות לנסות את הגישה קודם"
+  },
+  {
+    name: "חבילת תמיכה בהנקה",
+    price: "₪1,450",
+    duration: "3 פגישות + שבוע תמיכה",
+    description: "תמיכה מקיפה לאתגרי הנקה ואינטגרציה עם השינה.",
+    features: [
+      "3 פגישות ייעוץ (90 דקות כל אחת)",
+      "שבוע של תמיכה בווטסאפ",
+      "תכנית הנקה ושינה מותאמת",
+      "הדרכה והתאמות מתמשכות",
+      "משאבים לגמילה לילית עדינה"
+    ],
+    bestFor: "משפחות שמתמודדות עם איזון בין הנקה ושינה"
+  },
+  {
+    name: "תכנית שינוי לטווח ארוך",
+    price: "₪2,100",
+    duration: "3 שבועות תמיכה מקיפה",
+    description: "שינוי מלא עם תמיכה והדרכה מקיפים.",
+    features: [
+      "טופס הערכה מפורט וניתוח",
+      "יומן שגרה וניתוח",
+      "פיתוח תכנית שינה מותאמת",
+      "פגישת ייעוץ של 90 דקות",
+      "3 שבועות של תמיכה בווטסאפ",
+      "פגישות מעקב לפי הצורך",
+      "התאמות והדרכה מתמשכות"
+    ],
+    bestFor: "משפחות מוכנות לשינוי שינה מלא"
+  }
+];
+
+const policies = [
+  {
+    title: "מדיניות תשלום",
+    content: "התשלום נדרש במלואו לפני הפגישה הראשונה. אני מקבלת העברות בנק ו-PayPal. כל המחירים בשקלים ישראליים (₪)."
+  },
+  {
+    title: "מדיניות ביטול",
+    content: "אני מבינה שהחיים עם ילדים קטנים יכולים להיות בלתי צפויים. אנא ספקו הודעה של לפחות 24 שעות לביטולים. ביטולים מאוחרים עשויים לגרום לחיוב של 50% מדמי הפגישה."
+  },
+  {
+    title: "דחייה",
+    content: "אני שמחה לדחות פגישות עם הודעה של לפחות 24 שעות. נמצא זמן שעובד עבור שנינו."
+  },
+  {
+    title: "מדיניות החזר",
+    content: "אני מחויבת להצלחה שלכם. אם אתם לא מרוצים אחרי הפגישה הראשונה, אני מציעה החזר מלא. לחבילות מרובות פגישות, פגישות שלא נעשה בהן שימוש יוחזרו."
+  }
+];
+---
+
+<Layout title="מחירים ותנאים - ייעוץ שינה עדי">
+  <main class="max-w-6xl mx-auto px-4 py-12" dir="rtl">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-accent mb-6">
+        מחירים שקופים ותנאים
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        אני מאמינה במחירים ברורים ומראש כדי שתדעו בדיוק למה לצפות. 
+        בחרו את רמת התמיכה שמתאימה למשפחה שלכם.
+      </p>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="mb-16">
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map((service, index) => (
+          <div class={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col ${index === 1 ? 'border-2 border-brand-accent relative' : ''}`}>
+            {index === 1 && (
+              <div class="absolute top-0 left-0 right-0 bg-brand-accent text-white text-center py-2 text-sm font-semibold">
+                הפופולרי ביותר
+              </div>
+            )}
+            <div class={`p-6 flex flex-col h-full ${index === 1 ? 'pt-12' : ''}`}>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-brand-accent mb-2">{service.name}</h3>
+                <div class="mb-4">
+                  <span class="text-4xl font-bold text-gray-800">{service.price}</span>
+                  <span class="text-gray-600 mr-2">/ {service.duration}</span>
+                </div>
+                <p class="text-gray-600 mb-6">{service.description}</p>
+                
+                <ul class="space-y-3 mb-6">
+                  {service.features.map(feature => (
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-brand-accent mt-0.5 ml-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div class="mb-6">
+                  <p class="text-sm text-gray-600 font-semibold">מושלם עבור:</p>
+                  <p class="text-sm text-gray-600">{service.bestFor}</p>
+                </div>
+              </div>
+              
+              <div class="mt-auto">
+                <a href="/he/contact" class="w-full bg-brand-accent hover:bg-brand-accent-dark text-white py-3 px-6 rounded-lg font-semibold transition-colors text-center block">
+                  התחילו
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why Invest Section -->
+    <section class="mb-16 bg-gray-50 p-8 rounded-lg">
+      <h2 class="text-3xl font-bold text-brand-accent mb-6 text-center">
+        למה להשקיע בתמיכה בשינה?
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">עבור המשפחה שלכם</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• שינה טובה יותר לכולם במשפחה</li>
+            <li>• פחות לחץ ועייפות</li>
+            <li>• קשרים חזקים יותר בין הורה לילד</li>
+            <li>• יותר זמן לטיפול עצמי וחיבור</li>
+            <li>• הרגלי שינה בריאים לטווח ארוך</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">עבור הילד שלכם</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• ויסות רגשי משופר</li>
+            <li>• התפתחות קוגניטיבית טובה יותר</li>
+            <li>• ביטחון התקשרות חזק יותר</li>
+            <li>• דפוסי שינה בריאים יותר</li>
+            <li>• פחות חרדה סביב השינה</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policies Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-brand-accent mb-8 text-center">
+        מדיניות ונהלים
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        {policies.map(policy => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-3 text-brand-accent">{policy.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{policy.content}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="mb-16 bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-3xl font-bold text-brand-accent mb-6 text-center">
+        שיטות תשלום
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6 text-center">
+        <div class="p-4">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">העברת בנק</h3>
+          <p class="text-sm text-gray-600">העברה ישירה לחשבון ישראלי</p>
+        </div>
+        <div class="p-4">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">PayPal</h3>
+          <p class="text-sm text-gray-600">תשלום מקוון מאובטח</p>
+        </div>
+        <div class="p-4">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">תשלומים</h3>
+          <p class="text-sm text-gray-600">זמין לתכניות לטווח ארוך</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-brand-accent text-white p-8 rounded-lg">
+      <h2 class="text-3xl font-bold mb-4">מוכנים להשקיע בשינה של המשפחה שלכם?</h2>
+      <p class="text-xl mb-6 opacity-90">
+        בואו נעבוד יחד ליצירת לילות שקטים ומנוחה לכל המשפחה שלכם.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/he/contact" class="bg-white text-brand-accent hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          הזמינו ייעוץ
+        </a>
+        <a href="/he/faq" class="bg-transparent hover:bg-white hover:text-brand-accent border-2 border-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          קראו את השאלות הנפוצות שלנו
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout> 

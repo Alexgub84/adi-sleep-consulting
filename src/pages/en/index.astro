@@ -1,12 +1,29 @@
 ---
 import Layout from '../../layouts/en/PageLayout.astro';
-import WelcomeDynamic from '../../components/WelcomeDynamic.astro';
-import ContactForm from '../../components/en/ContactForm.astro';
+import HeroGallery from '../../components/HeroGallery.astro';
+import IntroBlock from '../../components/IntroBlock.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import QuickActions from '../../components/QuickActions.astro';
+import ConsultForm from '../../components/ConsultForm.astro';
+import Testimonials from '../../components/Testimonials.astro';
 ---
 
 <Layout title="ADI Sleep Consulting - Professional Sleep Solutions">
-	<WelcomeDynamic />
-	<div class="mt-12">
-		<ContactForm />
-	</div>
+	<!-- Hero Gallery Section -->
+	<HeroGallery />
+	
+	<!-- Founder Intro Section -->
+	<IntroBlock />
+	
+	<!-- Service Highlights Section -->
+	<ServiceCards />
+	
+	<!-- Quick Actions Section -->
+	<QuickActions />
+	
+	<!-- Consultation Form Section -->
+	<ConsultForm />
+	
+	<!-- Testimonials Section -->
+	<Testimonials />
 </Layout> 

@@ -1,0 +1,259 @@
+---
+import Layout from '../../layouts/he/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Blog articles data
+const articles = [
+  {
+    title: "מה זה הורות מבוססת התקשרות?",
+    excerpt: "הבנת העקרונות מאחורי הורות מבוססת התקשרות ואיך זה קשור להרגלי שינה בריאים.",
+    category: "פילוסופיית הורות",
+    readTime: "5 דקות קריאה",
+    date: "2024-01-15",
+    image: "/images/attachment-parenting.jpg",
+    slug: "what-is-attachment-based-parenting"
+  },
+  {
+    title: "איך להכין לשינה טובה יותר מהלידה",
+    excerpt: "טיפים ואסטרטגיות מעשיות להקמת יסודות שינה בריאים מהיום הראשון.",
+    category: "שינת תינוקות",
+    readTime: "7 דקות קריאה",
+    date: "2024-01-10",
+    image: "/images/newborn-sleep.jpg",
+    slug: "prepare-better-sleep-from-birth"
+  },
+  {
+    title: "גמילה לילית עדינה: מדריך שלב אחר שלב",
+    excerpt: "למדו איך לגמול בעדינות את הילד שלכם מהאכלות ליליות תוך שמירה על קשר ההנקה שלכם.",
+    category: "הנקה",
+    readTime: "8 דקות קריאה",
+    date: "2024-01-05",
+    image: "/images/night-weaning.jpg",
+    slug: "gentle-night-weaning-guide"
+  },
+  {
+    title: "הנקה ללא כאב: אתגרים נפוצים ופתרונות",
+    excerpt: "טיפול באתגרי הנקה נפוצים ומציאת פתרונות נוחים לאם ולתינוק.",
+    category: "הנקה",
+    readTime: "6 דקות קריאה",
+    date: "2024-01-01",
+    image: "/images/breastfeeding-comfort.jpg",
+    slug: "breastfeeding-without-pain"
+  },
+  {
+    title: "הבנת מחזורי השינה של הילד שלכם",
+    excerpt: "מדריך מקיף להבנת איך מחזורי שינה עובדים ומה נורמלי לגילאים שונים.",
+    category: "מדע השינה",
+    readTime: "9 דקות קריאה",
+    date: "2023-12-28",
+    image: "/images/sleep-cycles.jpg",
+    slug: "understanding-child-sleep-cycles"
+  },
+  {
+    title: "יצירת שגרת שינה מרגיעה",
+    excerpt: "אסטרטגיות פשוטות ליצירת שגרת שינה שקטה שעובדת עבור המשפחה שלכם.",
+    category: "שגרות שינה",
+    readTime: "4 דקות קריאה",
+    date: "2023-12-25",
+    image: "/images/bedtime-routine.jpg",
+    slug: "creating-calm-bedtime-routine"
+  }
+];
+
+const categories = [
+  "כל המאמרים",
+  "פילוסופיית הורות", 
+  "שינת תינוקות",
+  "הנקה",
+  "מדע השינה",
+  "שגרות שינה"
+];
+---
+
+<Layout title="בלוג שינה - ייעוץ שינה עדי">
+  <main class="max-w-6xl mx-auto px-4 py-12" dir="rtl">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-accent mb-6">
+        בלוג שינה ומשאבים
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        מאמרים ומשאבים מבוססי ראיות לתמיכה במסע השינה של המשפחה שלכם. 
+        מעקרונות הורות מבוססת התקשרות ועד אסטרטגיות שינה מעשיות.
+      </p>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="mb-12">
+      <div class="flex flex-wrap justify-center gap-4">
+        {categories.map(category => (
+          <button 
+            class="px-4 py-2 rounded-full bg-gray-100 hover:bg-brand-accent hover:text-white transition-colors text-sm font-medium"
+            onclick={`filterByCategory('${category}')`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="mb-16">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/2 bg-gray-200 h-64 md:h-auto flex items-center justify-center">
+            <div class="text-gray-500 text-center">
+              <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+              </svg>
+              <p>תמונה מובלטת</p>
+            </div>
+          </div>
+          <div class="md:w-1/2 p-8">
+            <div class="flex items-center mb-4">
+              <span class="bg-brand-accent text-white px-3 py-1 rounded-full text-sm font-medium">
+                {articles[0].category}
+              </span>
+              <span class="text-gray-500 text-sm mr-4">{articles[0].readTime}</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+              {articles[0].title}
+            </h2>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              {articles[0].excerpt}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-gray-500 text-sm">
+                {new Date(articles[0].date).toLocaleDateString('he-IL', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </span>
+              <a href={`/he/blog/${articles[0].slug}`} class="text-brand-accent hover:text-brand-accent-dark font-semibold">
+                קראו עוד ←
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-brand-accent mb-8 text-center">
+        המאמרים האחרונים
+      </h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.slice(1).map(article => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-gray-200 flex items-center justify-center">
+              <div class="text-gray-500 text-center">
+                <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                </svg>
+                <p class="text-sm">תמונת מאמר</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-medium">
+                  {article.category}
+                </span>
+                <span class="text-gray-500 text-xs mr-3">{article.readTime}</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3">
+                {article.title}
+              </h3>
+              <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                {article.excerpt}
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-500 text-xs">
+                  {new Date(article.date).toLocaleDateString('he-IL', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                  })}
+                </span>
+                <a href={`/he/blog/${article.slug}`} class="text-brand-accent hover:text-brand-accent-dark text-sm font-semibold">
+                  קראו עוד ←
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="mb-16 bg-gray-50 p-8 rounded-lg">
+      <h2 class="text-3xl font-bold text-brand-accent mb-6 text-center">
+        משאבים חינמיים
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-center">מדריך הערכת שינה</h3>
+          <p class="text-gray-600 text-center mb-4">
+            הורידו את המדריך החינמי שלנו להערכת מצב השינה הנוכחי של המשפחה שלכם וזיהוי אזורים לשיפור.
+          </p>
+          <a href="/he/contact" class="block text-center bg-brand-accent hover:bg-brand-accent-dark text-white px-6 py-2 rounded font-semibold transition-colors">
+            הורידו מדריך חינמי
+          </a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-center">תבנית שגרת שינה</h3>
+          <p class="text-gray-600 text-center mb-4">
+            קבלו את תבנית שגרת השינה המותאמת שלנו ליצירת טקס ערב שקט עבור המשפחה שלכם.
+          </p>
+          <a href="/he/contact" class="block text-center bg-brand-accent hover:bg-brand-accent-dark text-white px-6 py-2 rounded font-semibold transition-colors">
+            קבלו תבנית
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="bg-brand-accent text-white p-8 rounded-lg text-center">
+      <h2 class="text-3xl font-bold mb-4">הישארו מעודכנים</h2>
+      <p class="text-xl mb-6 opacity-90">
+        קבלו את הטיפים והמשאבים האחרונים לשינה ישירות לתיבת הדואר שלכם.
+      </p>
+      <div class="max-w-md mx-auto">
+        <div class="flex">
+          <input 
+            type="email" 
+            placeholder="הזינו את האימייל שלכם" 
+            class="flex-1 px-4 py-3 rounded-r-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+          >
+          <button class="bg-white text-brand-accent hover:bg-gray-100 px-6 py-3 rounded-l-lg font-semibold transition-colors">
+            הירשמו
+          </button>
+        </div>
+        <p class="text-sm opacity-75 mt-2">
+          אין ספאם, אפשר לבטל בכל זמן.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function filterByCategory(category: string) {
+      // This would be implemented with actual filtering logic
+      console.log('Filtering by:', category);
+    }
+  </script>
+</Layout> 

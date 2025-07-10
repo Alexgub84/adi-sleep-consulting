@@ -8,8 +8,12 @@ export const defaultLang = 'en';
 export const ui = {
   en: {
     'nav.home': 'Home',
+    'nav.start': 'Start Here',
     'nav.about': 'About Me',
     'nav.products': 'My Products',
+    'nav.pricing': 'Pricing',
+    'nav.faq': 'FAQ',
+    'nav.blog': 'Sleep Blog',
     'nav.contact': 'Contact',
     'lang.switch': 'עברית',
     'footer.copyright': '© 2024 ADI Sleep Consulting. All rights reserved.',
@@ -19,8 +23,12 @@ export const ui = {
   },
   he: {
     'nav.home': 'בית',
+    'nav.start': 'התחלה כאן',
     'nav.about': 'אודות',
     'nav.products': 'המוצרים שלי',
+    'nav.pricing': 'מחירים ותנאים',
+    'nav.faq': 'שאלות נפוצות',
+    'nav.blog': 'בלוג שינה',
     'nav.contact': 'צרי קשר',
     'lang.switch': 'English',
     'footer.copyright': '© 2024 ייעוץ שינה עדי. כל הזכויות שמורות.',

@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Patrick+Hand&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Custom styles that can't be achieved with Tailwind */
 /* Add any custom CSS here if needed */
+
+@layer base {
+  html {
+    @apply bg-brand-bg text-text-dark font-sans;
+  }
+  
+  body {
+    @apply font-sans text-text-dark bg-brand-bg;
+  }
+}

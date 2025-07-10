@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/en/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// FAQ data
+const faqs = [
+  {
+    question: "How soon will I see results?",
+    answer: "Most families begin to see improvements within 1-2 weeks of implementing our personalized plan. However, every child and family is different, and the timeline varies based on your specific situation and goals. I'll work with you to set realistic expectations and celebrate progress along the way."
+  },
+  {
+    question: "Do you use sleep training methods?",
+    answer: "No, I don't use traditional sleep training methods like 'cry it out' or controlled crying. My approach is attachment-based, focusing on strengthening the parent-child bond while gently guiding your child toward healthy sleep habits. We work together to create a plan that respects your child's unique temperament and your family's values."
+  },
+  {
+    question: "How many meetings are required?",
+    answer: "The number of meetings depends on which service you choose. For a one-time consultation, we have one 90-minute session. For breastfeeding support, we have 3 sessions plus a week of WhatsApp support. For the long-term program, we have an initial assessment, a 90-minute session, and 3 weeks of WhatsApp support with follow-up sessions as needed."
+  },
+  {
+    question: "What age groups do you work with?",
+    answer: "I work with families from pregnancy through age 5. This includes preparing for better sleep from birth, supporting newborns and infants, and helping with toddler sleep challenges. Each age group has unique needs and considerations."
+  },
+  {
+    question: "Do you offer virtual consultations?",
+    answer: "Yes! All my consultations are conducted virtually via Zoom or WhatsApp video calls. This allows me to work with families across Israel and internationally, and it's often more convenient for busy parents who don't need to travel."
+  },
+  {
+    question: "What if my child has special needs?",
+    answer: "I have experience working with children with various special needs and medical conditions. During our initial assessment, we'll discuss your child's specific situation, and I'll adapt my approach accordingly. I may also recommend additional resources or specialists if needed."
+  },
+  {
+    question: "Can you help with night weaning?",
+    answer: "Yes, I can help you with gentle night weaning that respects both your child's needs and your breastfeeding goals. We'll work together to create a plan that feels right for your family and supports your child's emotional well-being."
+  },
+  {
+    question: "What if the plan doesn't work for us?",
+    answer: "I'm committed to your success and will work with you to adjust the plan as needed. Every family is unique, and what works for one may not work for another. We'll monitor progress together and make changes to ensure the approach works for your specific situation."
+  },
+  {
+    question: "Do you offer support in Hebrew?",
+    answer: "Yes! I'm fluent in both Hebrew and English and offer all my services in both languages. You can choose which language you're most comfortable with for our consultations and communication."
+  },
+  {
+    question: "What makes your approach different?",
+    answer: "My approach is based on attachment theory and the work of Gordon Neufeld. I focus on strengthening the parent-child relationship rather than just changing sleep behaviors. This creates lasting positive changes and supports your child's emotional development while improving sleep."
+  }
+];
+---
+
+<Layout title="FAQ - ADI Sleep Consulting">
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-accent mb-6">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        Find answers to common questions about my attachment-based sleep consulting approach. 
+        If you don't see your question here, feel free to reach out directly.
+      </p>
+      <a href="/en/contact" class="inline-block bg-brand-accent hover:bg-brand-accent-dark text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+        Ask Your Question
+      </a>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-16">
+      <div class="space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button 
+              class="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-accent faq-button"
+              data-index={index}
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold text-brand-accent pr-4">
+                  {faq.question}
+                </h3>
+                <svg 
+                  class="w-5 h-5 text-brand-accent transform transition-transform faq-icon" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </button>
+            <div 
+              class="hidden px-6 py-4 border-t border-gray-200 faq-content"
+            >
+              <p class="text-gray-600 leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Additional Support -->
+    <section class="bg-gray-50 p-8 rounded-lg text-center">
+      <h2 class="text-3xl font-bold text-brand-accent mb-4">
+        Still Have Questions?
+      </h2>
+      <p class="text-xl text-gray-600 mb-6">
+        I'm here to help! Every family is unique, and I'm happy to discuss your specific situation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/en/contact" class="bg-brand-accent hover:bg-brand-accent-dark text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Schedule a Free Discovery Call
+        </a>
+        <a href="/en/start" class="bg-white hover:bg-gray-100 text-brand-accent border-2 border-brand-accent px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Learn More About My Approach
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqButtons = document.querySelectorAll('.faq-button');
+      
+      faqButtons.forEach(button => {
+        button.addEventListener('click', function(this: HTMLButtonElement) {
+          const content = this.nextElementSibling as HTMLElement;
+          const icon = this.querySelector('.faq-icon') as HTMLElement;
+          
+          if (content && icon) {
+            if (content.classList.contains('hidden')) {
+              content.classList.remove('hidden');
+              icon.style.transform = 'rotate(180deg)';
+            } else {
+              content.classList.add('hidden');
+              icon.style.transform = 'rotate(0deg)';
+            }
+          }
+        });
+      });
+    });
+  </script>
+</Layout> 

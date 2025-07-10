@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/en/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Start Here - ADI Sleep Consulting">
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-accent mb-6">
+        Welcome to Your Sleep Journey
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        Whether you're expecting, have a newborn, or are navigating toddler sleep challenges, 
+        I'm here to guide you with attachment-based, personalized support.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/en/contact" class="bg-brand-accent hover:bg-brand-accent-dark text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Book Your Consultation
+        </a>
+        <a href="/en/products" class="bg-white hover:bg-gray-50 text-brand-accent border-2 border-brand-accent px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Explore Services
+        </a>
+      </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-brand-accent mb-8 text-center">
+        What to Expect from Our Process
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6 bg-white rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white text-2xl font-bold">1</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Initial Assessment</h3>
+          <p class="text-gray-600">
+            We'll discuss your family's unique situation, sleep challenges, and goals through a comprehensive intake form.
+          </p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white text-2xl font-bold">2</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Personalized Plan</h3>
+          <p class="text-gray-600">
+            Receive a custom sleep plan tailored to your child's temperament and your family's values.
+          </p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white text-2xl font-bold">3</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Ongoing Support</h3>
+          <p class="text-gray-600">
+            Get continuous guidance and adjustments as your family's needs evolve.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-brand-accent mb-8 text-center">
+        Choose Your Support Level
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-accent">
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">One-Time Consultation</h3>
+          <p class="text-gray-600 mb-4">
+            Perfect for specific questions or getting started with gentle sleep guidance.
+          </p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-2">
+            <li>• 90-minute consultation</li>
+            <li>• Custom sleep plan</li>
+            <li>• Email follow-up</li>
+          </ul>
+          <a href="/en/contact" class="inline-block bg-brand-accent text-white px-6 py-2 rounded font-semibold hover:bg-brand-accent-dark transition-colors">
+            Book Now - ₪400
+          </a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-accent">
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">Breastfeeding Support</h3>
+          <p class="text-gray-600 mb-4">
+            Comprehensive support for breastfeeding challenges and sleep integration.
+          </p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-2">
+            <li>• 3 consultation sessions</li>
+            <li>• 1 week WhatsApp support</li>
+            <li>• Ongoing guidance</li>
+          </ul>
+          <a href="/en/contact" class="inline-block bg-brand-accent text-white px-6 py-2 rounded font-semibold hover:bg-brand-accent-dark transition-colors">
+            Learn More
+          </a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-accent">
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">Long-Term Program</h3>
+          <p class="text-gray-600 mb-4">
+            Complete transformation with comprehensive support and guidance.
+          </p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-2">
+            <li>• Intake assessment</li>
+            <li>• Custom sleep plan</li>
+            <li>• 3 weeks WhatsApp support</li>
+            <li>• Follow-up sessions</li>
+          </ul>
+          <a href="/en/contact" class="inline-block bg-brand-accent text-white px-6 py-2 rounded font-semibold hover:bg-brand-accent-dark transition-colors">
+            Get Started - ₪2,100
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Attachment-Based -->
+    <section class="mb-16 bg-gray-50 p-8 rounded-lg">
+      <h2 class="text-3xl font-bold text-brand-accent mb-6 text-center">
+        Why Attachment-Based Sleep Support?
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">What It Means</h3>
+          <p class="text-gray-600 mb-4">
+            Attachment-based sleep support focuses on strengthening the parent-child bond while gently guiding 
+            your child toward healthy sleep habits. No rigid schedules or one-size-fits-all approaches.
+          </p>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Respects your child's unique temperament</li>
+            <li>• Strengthens parent-child connection</li>
+            <li>• Adapts to your family's values</li>
+            <li>• Provides long-term solutions</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">What You Won't Get</h3>
+          <p class="text-gray-600 mb-4">
+            I don't use traditional sleep training methods that may cause distress or weaken the parent-child bond.
+          </p>
+          <ul class="text-gray-600 space-y-2">
+            <li>• No "cry it out" methods</li>
+            <li>• No rigid schedules</li>
+            <li>• No one-size-fits-all solutions</li>
+            <li>• No pressure to follow strict timelines</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-brand-accent text-white p-8 rounded-lg">
+      <h2 class="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
+      <p class="text-xl mb-6 opacity-90">
+        Let's work together to create peaceful, restful nights for your entire family.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/en/contact" class="bg-white text-brand-accent hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Book Your Free Discovery Call
+        </a>
+        <a href="/en/faq" class="bg-transparent hover:bg-white hover:text-brand-accent border-2 border-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Read Our FAQ
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout> 

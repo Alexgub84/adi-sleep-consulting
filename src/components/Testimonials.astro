@@ -1,0 +1,88 @@
+---
+import { getLangFromUrl } from '../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+
+const content = {
+  en: {
+    title: "What Families Say",
+    subtitle: "Real stories from real families",
+    testimonials: [
+      {
+        quote: "ADI Sleep Consulting completely transformed our family's sleep routine. Our 18-month-old now sleeps through the night consistently, and we finally have our evenings back. The personalized approach made all the difference.",
+        author: "Sarah & David Cohen",
+        location: "Tel Aviv"
+      },
+      {
+        quote: "After struggling with our baby's sleep for months, we found ADI and within just two weeks, our little one was sleeping much better. The support and guidance were incredible - highly recommend!",
+        author: "Rachel & Michael Levy",
+        location: "Jerusalem"
+      },
+      {
+        quote: "Professional, caring, and incredibly effective. Our sleep consultant understood our family's unique situation and provided solutions that actually worked. Our toddler now has healthy sleep habits.",
+        author: "Miriam & Daniel Rosenberg",
+        location: "Haifa"
+      },
+      {
+        quote: "The best investment we've made for our family's well-being. Our consultant was patient, knowledgeable, and helped us establish routines that work for our busy lifestyle.",
+        author: "Leah & Jonathan Green",
+        location: "Beer Sheva"
+      }
+    ]
+  },
+  he: {
+    title: "מה המשפחות אומרות",
+    subtitle: "סיפורים אמיתיים ממשפחות אמיתיות",
+    testimonials: [
+      {
+        quote: "ייעוץ שינה עדי שינה לחלוטין את שגרת השינה של המשפחה שלנו. הפעוט בן 18 החודשים שלנו עכשיו ישן כל הלילה באופן עקבי, ולבסוף יש לנו את הערבים שלנו בחזרה. הגישה המותאמת אישית עשתה את כל ההבדל.",
+        author: "שרה ודוד כהן",
+        location: "תל אביב"
+      },
+      {
+        quote: "אחרי שהתקשינו עם השינה של התינוק שלנו במשך חודשים, מצאנו את עדי ותוך שבועיים בלבד, הקטן שלנו ישן הרבה יותר טוב. התמיכה וההדרכה היו מדהימות - ממליצים בחום!",
+        author: "רחל ומיכאל לוי",
+        location: "ירושלים"
+      },
+      {
+        quote: "מקצועית, איכפתית ויעילה להפליא. היועצת שלנו הבינה את המצב הייחודי של המשפחה שלנו וסיפקה פתרונות שבאמת עובדים. הפעוט שלנו עכשיו יש הרגלי שינה בריאים.",
+        author: "מרים ודניאל רוזנברג",
+        location: "חיפה"
+      },
+      {
+        quote: "ההשקעה הטובה ביותר שעשינו לרווחת המשפחה שלנו. היועצת שלנו הייתה סבלנית, מקצועית ועזרה לנו להקים שגרות שעובדות לאורח החיים העמוס שלנו.",
+        author: "לאה ויונתן גרין",
+        location: "באר שבע"
+      }
+    ]
+  }
+};
+
+const { title, subtitle, testimonials } = content[lang as keyof typeof content] || content.en;
+---
+
+<section class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold text-text-dark mb-4">{title}</h2>
+      <p class="text-lg font-medium text-text-dark">{subtitle}</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white p-6 rounded shadow">
+          <div class="mb-6">
+            <svg class="w-12 h-12 text-brand-accent mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <p class="text-base leading-relaxed text-text-dark mb-6">"{testimonial.quote}"</p>
+          </div>
+          <div class="border-t border-soft-border pt-4">
+            <p class="font-semibold text-text-dark">{testimonial.author}</p>
+            <p class="text-text-dark text-sm">{testimonial.location}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 

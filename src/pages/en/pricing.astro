@@ -1,0 +1,232 @@
+---
+import Layout from '../../layouts/en/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Pricing data
+const services = [
+  {
+    name: "One-Time Consultation",
+    price: "₪400",
+    duration: "90 minutes",
+    description: "Perfect for specific questions or getting started with gentle sleep guidance.",
+    features: [
+      "Comprehensive intake assessment",
+      "90-minute consultation session",
+      "Custom sleep plan tailored to your family",
+      "Email follow-up support",
+      "Resources and recommendations"
+    ],
+    bestFor: "Families with specific questions or those wanting to try the approach first"
+  },
+  {
+    name: "Breastfeeding Support Package",
+    price: "₪1,450",
+    duration: "3 sessions + 1 week support",
+    description: "Comprehensive support for breastfeeding challenges and sleep integration.",
+    features: [
+      "3 consultation sessions (90 minutes each)",
+      "1 week of WhatsApp support",
+      "Custom breastfeeding and sleep plan",
+      "Ongoing guidance and adjustments",
+      "Resources for gentle night weaning"
+    ],
+    bestFor: "Families struggling with breastfeeding and sleep balance"
+  },
+  {
+    name: "Long-Term Transformation Program",
+    price: "₪2,100",
+    duration: "3 weeks comprehensive support",
+    description: "Complete transformation with comprehensive support and guidance.",
+    features: [
+      "Detailed intake form and assessment",
+      "Routine journal and analysis",
+      "Custom sleep plan development",
+      "90-minute consultation session",
+      "3 weeks of WhatsApp support",
+      "Follow-up sessions as needed",
+      "Ongoing adjustments and guidance"
+    ],
+    bestFor: "Families ready for complete sleep transformation"
+  }
+];
+
+const policies = [
+  {
+    title: "Payment Policy",
+    content: "Payment is due in full before the first session. I accept bank transfers and PayPal. All prices are in Israeli Shekels (₪)."
+  },
+  {
+    title: "Cancellation Policy",
+    content: "I understand that life with little ones can be unpredictable. Please provide at least 24 hours notice for cancellations. Late cancellations may result in a 50% charge of the session fee."
+  },
+  {
+    title: "Rescheduling",
+    content: "I'm happy to reschedule sessions with at least 24 hours notice. We'll find a time that works for both of us."
+  },
+  {
+    title: "Refund Policy",
+    content: "I'm committed to your success. If you're not satisfied after the first session, I offer a full refund. For multi-session packages, unused sessions will be refunded."
+  }
+];
+---
+
+<Layout title="Pricing & Policies - ADI Sleep Consulting">
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-accent mb-6">
+        Transparent Pricing & Policies
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        I believe in clear, upfront pricing so you know exactly what to expect. 
+        Choose the support level that's right for your family.
+      </p>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="mb-16">
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map((service, index) => (
+          <div class={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col ${index === 1 ? 'border-2 border-brand-accent relative' : ''}`}>
+            {index === 1 && (
+              <div class="absolute top-0 left-0 right-0 bg-brand-accent text-white text-center py-2 text-sm font-semibold">
+                Most Popular
+              </div>
+            )}
+            <div class={`p-6 flex flex-col h-full ${index === 1 ? 'pt-12' : ''}`}>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-brand-accent mb-2">{service.name}</h3>
+                <div class="mb-4">
+                  <span class="text-4xl font-bold text-gray-800">{service.price}</span>
+                  <span class="text-gray-600 ml-2">/ {service.duration}</span>
+                </div>
+                <p class="text-gray-600 mb-6">{service.description}</p>
+                
+                <ul class="space-y-3 mb-6">
+                  {service.features.map(feature => (
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-brand-accent mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div class="mb-6">
+                  <p class="text-sm text-gray-600 font-semibold">Best for:</p>
+                  <p class="text-sm text-gray-600">{service.bestFor}</p>
+                </div>
+              </div>
+              
+              <div class="mt-auto">
+                <a href="/en/contact" class="w-full bg-brand-accent hover:bg-brand-accent-dark text-white py-3 px-6 rounded-lg font-semibold transition-colors text-center block">
+                  Get Started
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why Invest Section -->
+    <section class="mb-16 bg-gray-50 p-8 rounded-lg">
+      <h2 class="text-3xl font-bold text-brand-accent mb-6 text-center">
+        Why Invest in Sleep Support?
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">For Your Family</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Better sleep for everyone in the family</li>
+            <li>• Reduced stress and exhaustion</li>
+            <li>• Stronger parent-child relationships</li>
+            <li>• More time for self-care and connection</li>
+            <li>• Long-term healthy sleep habits</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">For Your Child</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Improved emotional regulation</li>
+            <li>• Better cognitive development</li>
+            <li>• Stronger attachment security</li>
+            <li>• Healthier sleep patterns</li>
+            <li>• Reduced anxiety around sleep</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policies Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-brand-accent mb-8 text-center">
+        Policies & Procedures
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        {policies.map(policy => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-3 text-brand-accent">{policy.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{policy.content}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="mb-16 bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-3xl font-bold text-brand-accent mb-6 text-center">
+        Payment Methods
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6 text-center">
+        <div class="p-4">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Bank Transfer</h3>
+          <p class="text-sm text-gray-600">Direct bank transfer to Israeli account</p>
+        </div>
+        <div class="p-4">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">PayPal</h3>
+          <p class="text-sm text-gray-600">Secure online payment</p>
+        </div>
+        <div class="p-4">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Installments</h3>
+          <p class="text-sm text-gray-600">Available for long-term programs</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-brand-accent text-white p-8 rounded-lg">
+      <h2 class="text-3xl font-bold mb-4">Ready to Invest in Your Family's Sleep?</h2>
+      <p class="text-xl mb-6 opacity-90">
+        Let's work together to create peaceful, restful nights for your entire family.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/en/contact" class="bg-white text-brand-accent hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Schedule Your Consultation
+        </a>
+        <a href="/en/faq" class="bg-transparent hover:bg-white hover:text-brand-accent border-2 border-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          Read Our FAQ
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout> 

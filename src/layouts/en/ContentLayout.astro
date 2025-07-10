@@ -18,7 +18,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" class="w-full h-full" dir="ltr">
+<html lang="en" class="w-full h-full font-sans text-text-dark bg-brand-bg" dir="ltr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,9 +49,9 @@ const {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 	</head>
-	<body class="w-full h-full m-0 font-sans">
+	<body class="w-full h-full m-0 font-sans text-text-dark bg-brand-bg">
 		<Header />
-		<main class="container mx-auto px-4 sm:px-6 py-8 max-w-4xl prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-h1:text-3xl prose-h1:sm:text-4xl prose-h1:font-bold prose-h1:mb-8 prose-h2:text-2xl prose-h2:font-semibold prose-h2:mb-6 prose-p:leading-relaxed prose-p:mb-4">
+		<main class="max-w-5xl mx-auto px-4 py-12 prose prose-lg max-w-none prose-headings:text-text-dark prose-p:text-text-dark prose-h1:text-3xl prose-h1:sm:text-4xl prose-h1:font-bold prose-h1:mb-8 prose-h2:text-2xl prose-h2:font-semibold prose-h2:mb-6 prose-p:leading-relaxed prose-p:mb-4">
 			<slot />
 		</main>
 	</body>

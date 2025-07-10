@@ -4,14 +4,18 @@ import { getLangFromUrl, useTranslations } from '../i18n/config.js';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const otherLang = lang === 'en' ? 'he' : 'en';
-const otherLangPath = lang === 'en' ? '/he' : '/en';
+
 
 // Navigation items
 const navItems = [
   { href: `/${lang}/`, label: t('nav.home') },
-  { href: `/${lang}/about`, label: t('nav.about') },
+  { href: `/${lang}/start`, label: t('nav.start') },
   { href: `/${lang}/products`, label: t('nav.products') },
-  { href: `/${lang}/contact`, label: t('nav.contact') }
+  { href: `/${lang}/pricing`, label: t('nav.pricing') },
+  { href: `/${lang}/faq`, label: t('nav.faq') },
+  { href: `/${lang}/blog`, label: t('nav.blog') },
+  { href: `/${lang}/contact`, label: t('nav.contact') },
+  { href: `/${lang}/about`, label: t('nav.about') }
 ];
 
 // Generate the other language URL
@@ -19,16 +23,16 @@ const currentPath = Astro.url.pathname;
 const otherLangUrl = currentPath.replace(`/${lang}`, `/${otherLang}`);
 ---
 
-<header class="bg-gray-800 py-4">
-    <nav class="px-4">
-        <div class="flex flex-col sm:flex-row justify-between items-center">
+<header class="bg-brand-accent py-6 shadow-lg">
+    <nav class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
             <!-- Main Navigation -->
-            <ul class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 m-0 p-0 list-none">
+            <ul class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-10 m-0 p-0 list-none">
                 {navItems.map((item: any) => (
                     <li class="w-full sm:w-auto text-center">
                         <a 
                             href={item.href} 
-                            class="text-white hover:text-gray-300 text-lg no-underline block py-2 sm:py-0"
+                            class="text-white hover:text-soft-border text-lg no-underline block py-2 sm:py-0 transition-colors font-medium"
                         >
                             {item.label}
                         </a>
@@ -40,7 +44,7 @@ const otherLangUrl = currentPath.replace(`/${lang}`, `/${otherLang}`);
             <div class="mt-4 sm:mt-0">
                 <a 
                     href={otherLangUrl} 
-                    class="text-white hover:text-gray-300 text-sm no-underline px-3 py-1 border border-white rounded hover:bg-white hover:text-gray-800 transition-colors"
+                    class="bg-white hover:bg-brand-accent-dark text-brand-accent hover:text-white text-sm no-underline px-4 py-2 border border-white rounded transition-colors font-medium shadow"
                 >
                     {t('lang.switch')}
                 </a>

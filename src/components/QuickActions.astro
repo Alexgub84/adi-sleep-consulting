@@ -1,0 +1,94 @@
+---
+import { getLangFromUrl } from '../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+
+const content = {
+  en: {
+    title: "Quick Actions",
+    subtitle: "Get started with our services",
+    actions: [
+      {
+        title: "Free Consultation",
+        description: "Book a free 15-minute consultation",
+        icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+        link: "/en/contact"
+      },
+      {
+        title: "Sleep Assessment",
+        description: "Take our sleep assessment quiz",
+        icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+        link: "/en/assessment"
+      },
+      {
+        title: "Resources",
+        description: "Access our sleep resources library",
+        icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+        link: "/en/resources"
+      },
+      {
+        title: "Success Stories",
+        description: "Read testimonials from families",
+        icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+        link: "/en/testimonials"
+      }
+    ]
+  },
+  he: {
+    title: "פעולות מהירות",
+    subtitle: "התחל עם השירותים שלנו",
+    actions: [
+      {
+        title: "ייעוץ חינם",
+        description: "קבע פגישת ייעוץ חינם של 15 דקות",
+        icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+        link: "/he/contact"
+      },
+      {
+        title: "הערכת שינה",
+        description: "עשה את מבחן הערכת השינה שלנו",
+        icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+        link: "/he/assessment"
+      },
+      {
+        title: "משאבים",
+        description: "גש לספריית משאבי השינה שלנו",
+        icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+        link: "/he/resources"
+      },
+      {
+        title: "סיפורי הצלחה",
+        description: "קרא המלצות ממשפחות",
+        icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+        link: "/he/testimonials"
+      }
+    ]
+  }
+};
+
+const { title, subtitle, actions } = content[lang as keyof typeof content] || content.en;
+---
+
+<section class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold text-text-dark mb-4">{title}</h2>
+      <p class="text-lg font-medium text-text-dark">{subtitle}</p>
+    </div>
+    
+    <div class="flex flex-wrap justify-center gap-4">
+      {actions.map((action) => (
+        <a 
+          href={action.link}
+          class="bg-brand-accent hover:bg-brand-accent-dark text-white px-6 py-4 rounded shadow flex flex-col items-center text-center min-w-[200px] transition-colors"
+        >
+          <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={action.icon}></path>
+          </svg>
+          <h3 class="font-semibold mb-2">{action.title}</h3>
+          <p class="text-sm opacity-90">{action.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section> 

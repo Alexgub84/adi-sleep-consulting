@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/he/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// FAQ data
+const faqs = [
+  {
+    question: "מתי אראה תוצאות?",
+    answer: "רוב המשפחות מתחילות לראות שיפורים תוך 1-2 שבועות מיישום התכנית המותאמת אישית שלנו. עם זאת, כל ילד ומשפחה שונים, והזמן משתנה בהתאם למצב הספציפי שלכם ולמטרות. אני אעבוד איתכם כדי לקבוע ציפיות ריאליות ולחגוג התקדמות לאורך הדרך."
+  },
+  {
+    question: "האם אתם משתמשים בשיטות אימון שינה?",
+    answer: "לא, אני לא משתמשת בשיטות אימון שינה מסורתיות כמו 'בכי עד שתירדם' או בכי מבוקר. הגישה שלי מבוססת על התקשרות, מתמקדת בחיזוק הקשר בין הורה לילד תוך הדרכה עדינה של הילד שלכם לעבר הרגלי שינה בריאים. אנחנו עובדים יחד כדי ליצור תכנית שמכבדת את הטמפרמנט הייחודי של הילד שלכם ואת הערכים של המשפחה שלכם."
+  },
+  {
+    question: "כמה פגישות נדרשות?",
+    answer: "מספר הפגישות תלוי באיזה שירות אתם בוחרים. לייעוץ חד פעמי, יש לנו פגישה אחת של 90 דקות. לתמיכה בהנקה, יש לנו 3 פגישות plus שבוע של תמיכה בווטסאפ. לתכנית לטווח ארוך, יש לנו הערכה ראשונית, פגישה של 90 דקות, ו-3 שבועות של תמיכה בווטסאפ עם פגישות מעקב לפי הצורך."
+  },
+  {
+    question: "עם איזה קבוצות גיל אתם עובדים?",
+    answer: "אני עובדת עם משפחות מההריון ועד גיל 5. זה כולל הכנה לשינה טובה יותר מהלידה, תמיכה בתינוקות חדשים ופעוטות, ועזרה עם אתגרי שינה של פעוטות. לכל קבוצת גיל יש צרכים ושיקולים ייחודיים."
+  },
+  {
+    question: "האם אתם מציעים ייעוצים וירטואליים?",
+    answer: "כן! כל הייעוצים שלי מתקיימים וירטואלית דרך זום או שיחות וידאו בווטסאפ. זה מאפשר לי לעבוד עם משפחות ברחבי ישראל ובינלאומית, וזה לרוב יותר נוח להורים עסוקים שלא צריכים לנסוע."
+  },
+  {
+    question: "מה אם לילד שלי יש צרכים מיוחדים?",
+    answer: "יש לי ניסיון בעבודה עם ילדים עם צרכים מיוחדים שונים ומצבים רפואיים. במהלך ההערכה הראשונית שלנו, נדון במצב הספציפי של הילד שלכם, ואני אתאים את הגישה בהתאם. אני עשויה גם להמליץ על משאבים נוספים או מומחים אם נדרש."
+  },
+  {
+    question: "האם אתם יכולים לעזור עם גמילה לילית?",
+    answer: "כן, אני יכולה לעזור לכם עם גמילה לילית עדינה שמכבדת גם את הצרכים של הילד שלכם וגם את מטרות ההנקה שלכם. נעבוד יחד כדי ליצור תכנית שמרגישה נכון למשפחה שלכם ותומכת ברווחה הרגשית של הילד שלכם."
+  },
+  {
+    question: "מה אם התכנית לא עובדת עבורנו?",
+    answer: "אני מחויבת להצלחה שלכם ואעבוד איתכם כדי להתאים את התכנית לפי הצורך. כל משפחה ייחודית, ומה שעובד עבור אחת עשוי לא לעבוד עבור אחרת. נעקוב אחר התקדמות יחד ונבצע שינויים כדי להבטיח שהגישה עובדת עבור המצב הספציפי שלכם."
+  },
+  {
+    question: "האם אתם מציעים תמיכה בעברית?",
+    answer: "כן! אני שולטת בשתי השפות עברית ואנגלית ומציעה את כל השירותים שלי בשתי השפות. אתם יכולים לבחור באיזו שפה אתם הכי נוחים לייעוצים שלנו ולתקשורת."
+  },
+  {
+    question: "מה הופך את הגישה שלכם לשונה?",
+    answer: "הגישה שלי מבוססת על תיאוריית ההתקשרות ועבודתו של גורדון נויפלד. אני מתמקדת בחיזוק הקשר בין הורה לילד במקום רק לשנות התנהגויות שינה. זה יוצר שינויים חיוביים מתמשכים ותומך בהתפתחות הרגשית של הילד שלכם תוך שיפור השינה."
+  }
+];
+---
+
+<Layout title="שאלות נפוצות - ייעוץ שינה עדי">
+  <main class="max-w-4xl mx-auto px-4 py-12" dir="rtl">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-accent mb-6">
+        שאלות נפוצות
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        מצאו תשובות לשאלות נפוצות על הגישה שלי לייעוץ שינה מבוסס התקשרות. 
+        אם אתם לא רואים את השאלה שלכם כאן, אל תהססו לפנות ישירות.
+      </p>
+      <a href="/he/contact" class="inline-block bg-brand-accent hover:bg-brand-accent-dark text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+        שאלו את השאלה שלכם
+      </a>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-16">
+      <div class="space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button 
+              class="w-full px-6 py-4 text-right bg-gray-50 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-accent faq-button"
+              data-index={index}
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold text-brand-accent pl-4">
+                  {faq.question}
+                </h3>
+                <svg 
+                  class="w-5 h-5 text-brand-accent transform transition-transform faq-icon" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </button>
+            <div 
+              class="hidden px-6 py-4 border-t border-gray-200 faq-content"
+            >
+              <p class="text-gray-600 leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Additional Support -->
+    <section class="bg-gray-50 p-8 rounded-lg text-center">
+      <h2 class="text-3xl font-bold text-brand-accent mb-4">
+        עדיין יש לכם שאלות?
+      </h2>
+      <p class="text-xl text-gray-600 mb-6">
+        אני כאן לעזור! כל משפחה ייחודית, ואני שמחה לדון במצב הספציפי שלכם.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/he/contact" class="bg-brand-accent hover:bg-brand-accent-dark text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          הזמינו שיחת גילוי חינם
+        </a>
+        <a href="/he/start" class="bg-white hover:bg-gray-100 text-brand-accent border-2 border-brand-accent px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          למדו עוד על הגישה שלי
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqButtons = document.querySelectorAll('.faq-button');
+      
+      faqButtons.forEach(button => {
+        button.addEventListener('click', function(this: HTMLButtonElement) {
+          const content = this.nextElementSibling as HTMLElement;
+          const icon = this.querySelector('.faq-icon') as HTMLElement;
+          
+          if (content && icon) {
+            if (content.classList.contains('hidden')) {
+              content.classList.remove('hidden');
+              icon.style.transform = 'rotate(180deg)';
+            } else {
+              content.classList.add('hidden');
+              icon.style.transform = 'rotate(0deg)';
+            }
+          }
+        });
+      });
+    });
+  </script>
+</Layout> 

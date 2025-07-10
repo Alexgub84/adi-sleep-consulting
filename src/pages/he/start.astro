@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/he/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="התחלה כאן - ייעוץ שינה עדי">
+  <main class="max-w-4xl mx-auto px-4 py-12" dir="rtl">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-accent mb-6">
+        ברוכים הבאים למסע השינה שלכם
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        בין אם אתם מצפים לתינוק, יש לכם תינוק חדש, או מתמודדים עם אתגרי שינה של פעוטות, 
+        אני כאן להדריך אתכם עם תמיכה מותאמת אישית המבוססת על התקשרות.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/he/contact" class="bg-brand-accent hover:bg-brand-accent-dark text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          הזמינו ייעוץ
+        </a>
+        <a href="/he/products" class="bg-white hover:bg-gray-50 text-brand-accent border-2 border-brand-accent px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          גלו שירותים
+        </a>
+      </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-brand-accent mb-8 text-center">
+        מה לצפות מהתהליך שלנו
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6 bg-white rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white text-2xl font-bold">1</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">הערכה ראשונית</h3>
+          <p class="text-gray-600">
+            נדון במצב הייחודי של המשפחה שלכם, אתגרי השינה והמטרות דרך טופס הערכה מקיף.
+          </p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white text-2xl font-bold">2</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">תכנית מותאמת אישית</h3>
+          <p class="text-gray-600">
+            קבלו תכנית שינה מותאמת לטמפרמנט של הילד שלכם ולערכים של המשפחה שלכם.
+          </p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white text-2xl font-bold">3</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">תמיכה מתמשכת</h3>
+          <p class="text-gray-600">
+            קבלו הדרכה מתמשכת והתאמות ככל שהצרכים של המשפחה שלכם מתפתחים.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-brand-accent mb-8 text-center">
+        בחרו את רמת התמיכה שלכם
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md border-r-4 border-brand-accent">
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">ייעוץ חד פעמי</h3>
+          <p class="text-gray-600 mb-4">
+            מושלם לשאלות ספציפיות או להתחלה עם הדרכה עדינה לשינה.
+          </p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-2">
+            <li>• ייעוץ של 90 דקות</li>
+            <li>• תכנית שינה מותאמת</li>
+            <li>• מעקב באימייל</li>
+          </ul>
+          <a href="/he/contact" class="inline-block bg-brand-accent text-white px-6 py-2 rounded font-semibold hover:bg-brand-accent-dark transition-colors">
+            הזמינו עכשיו - ₪400
+          </a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md border-r-4 border-brand-accent">
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">תמיכה בהנקה</h3>
+          <p class="text-gray-600 mb-4">
+            תמיכה מקיפה לאתגרי הנקה ואינטגרציה עם השינה.
+          </p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-2">
+            <li>• 3 פגישות ייעוץ</li>
+            <li>• תמיכה בווטסאפ למשך שבוע</li>
+            <li>• הדרכה מתמשכת</li>
+          </ul>
+          <a href="/he/contact" class="inline-block bg-brand-accent text-white px-6 py-2 rounded font-semibold hover:bg-brand-accent-dark transition-colors">
+            למדו עוד
+          </a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md border-r-4 border-brand-accent">
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">תכנית לטווח ארוך</h3>
+          <p class="text-gray-600 mb-4">
+            שינוי מלא עם תמיכה והדרכה מקיפים.
+          </p>
+          <ul class="text-sm text-gray-600 mb-4 space-y-2">
+            <li>• הערכה ראשונית</li>
+            <li>• תכנית שינה מותאמת</li>
+            <li>• תמיכה בווטסאפ למשך 3 שבועות</li>
+            <li>• פגישות מעקב</li>
+          </ul>
+          <a href="/he/contact" class="inline-block bg-brand-accent text-white px-6 py-2 rounded font-semibold hover:bg-brand-accent-dark transition-colors">
+            התחילו - ₪2,100
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Attachment-Based -->
+    <section class="mb-16 bg-gray-50 p-8 rounded-lg">
+      <h2 class="text-3xl font-bold text-brand-accent mb-6 text-center">
+        למה תמיכה בשינה מבוססת התקשרות?
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">מה זה אומר</h3>
+          <p class="text-gray-600 mb-4">
+            תמיכה בשינה מבוססת התקשרות מתמקדת בחיזוק הקשר בין הורה לילד תוך הדרכה עדינה 
+            של הילד שלכם לעבר הרגלי שינה בריאים. אין לוחות זמנים נוקשים או גישות אחידות לכולם.
+          </p>
+          <ul class="text-gray-600 space-y-2">
+            <li>• מכבד את הטמפרמנט הייחודי של הילד שלכם</li>
+            <li>• מחזק את הקשר בין הורה לילד</li>
+            <li>• מתאים לערכים של המשפחה שלכם</li>
+            <li>• מספק פתרונות לטווח ארוך</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-brand-accent">מה לא תקבלו</h3>
+          <p class="text-gray-600 mb-4">
+            אני לא משתמשת בשיטות אימון שינה מסורתיות שעלולות לגרום למצוקה או להחליש את הקשר בין הורה לילד.
+          </p>
+          <ul class="text-gray-600 space-y-2">
+            <li>• אין שיטות "בכי עד שתירדם"</li>
+            <li>• אין לוחות זמנים נוקשים</li>
+            <li>• אין פתרונות אחידים לכולם</li>
+            <li>• אין לחץ לעקוב אחר לוחות זמנים נוקשים</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-brand-accent text-white p-8 rounded-lg">
+      <h2 class="text-3xl font-bold mb-4">מוכנים להתחיל את המסע שלכם?</h2>
+      <p class="text-xl mb-6 opacity-90">
+        בואו נעבוד יחד ליצירת לילות שקטים ומנוחה לכל המשפחה שלכם.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/he/contact" class="bg-white text-brand-accent hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          הזמינו שיחת גילוי חינם
+        </a>
+        <a href="/he/faq" class="bg-transparent hover:bg-white hover:text-brand-accent border-2 border-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+          קראו את השאלות הנפוצות שלנו
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout> 

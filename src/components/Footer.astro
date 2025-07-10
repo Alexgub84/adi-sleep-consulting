@@ -12,22 +12,22 @@ const footerLinks = [
 ];
 ---
 
-<footer class="bg-gray-800 text-white py-8 mt-auto">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-center">
+<footer class="bg-brand-accent text-white py-12 mt-auto shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <!-- Copyright -->
-            <div class="text-center md:text-left mb-4 md:mb-0">
-                <p class="text-sm text-gray-300">
+            <div class="text-center md:text-left">
+                <p class="text-sm text-soft-border">
                     {t('footer.copyright')}
                 </p>
             </div>
             
             <!-- Footer Links -->
-            <div class="flex flex-wrap justify-center gap-6">
+            <div class="flex flex-wrap justify-center gap-8">
                 {footerLinks.map((link: any) => (
                     <a 
                         href={link.href} 
-                        class="text-gray-300 hover:text-white text-sm no-underline transition-colors"
+                        class="text-soft-border hover:text-white text-sm no-underline transition-colors font-medium"
                     >
                         {link.label}
                     </a>

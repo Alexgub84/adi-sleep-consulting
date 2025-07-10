@@ -1,0 +1,77 @@
+---
+import { getLangFromUrl } from '../i18n/config.js';
+
+const lang = getLangFromUrl(Astro.url);
+
+const content = {
+  en: {
+    title: "Our Services",
+    subtitle: "Professional sleep solutions for your family",
+    services: [
+      {
+        title: "Infant Sleep Training",
+        description: "Specialized programs for babies 0-12 months to establish healthy sleep patterns from the start.",
+        icon: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+      },
+      {
+        title: "Toddler Sleep Solutions",
+        description: "Comprehensive approaches for children 1-3 years to overcome sleep challenges and establish routines.",
+        icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      },
+      {
+        title: "Family Sleep Coaching",
+        description: "Personalized guidance for the entire family to create a peaceful sleep environment and healthy habits.",
+        icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+      }
+    ]
+  },
+  he: {
+    title: "השירותים שלנו",
+    subtitle: "פתרונות שינה מקצועיים למשפחה שלך",
+    services: [
+      {
+        title: "אימון שינה לתינוקות",
+        description: "תכניות מיוחדות לתינוקות בני 0-12 חודשים להקמת דפוסי שינה בריאים מההתחלה.",
+        icon: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+      },
+      {
+        title: "פתרונות שינה לפעוטות",
+        description: "גישות מקיפות לילדים בני 1-3 שנים להתגבר על אתגרי שינה ולהקמת שגרות.",
+        icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      },
+      {
+        title: "אימון שינה למשפחה",
+        description: "הדרכה מותאמת אישית לכל המשפחה ליצירת סביבת שינה רגועה והרגלים בריאים.",
+        icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+      }
+    ]
+  }
+};
+
+const { title, subtitle, services } = content[lang as keyof typeof content] || content.en;
+---
+
+<section class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold text-text-dark mb-4">{title}</h2>
+      <p class="text-lg font-medium text-text-dark">{subtitle}</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition-shadow">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon}></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium text-text-dark mb-3">{service.title}</h3>
+            <p class="text-base leading-relaxed text-text-dark">{service.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 
